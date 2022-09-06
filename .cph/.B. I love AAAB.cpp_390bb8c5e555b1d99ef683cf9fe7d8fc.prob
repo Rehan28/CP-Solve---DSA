@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\C++ code\\B. I love AAAB.cpp","tests":[{"id":1659940497208,"input":"4\nAABAB\nABB\nAAAAAAAAB\nA","output":"YES\nNO\nYES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\B. I love AAAB.cpp","group":"local","local":true}

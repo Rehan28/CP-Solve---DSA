@@ -1,0 +1,1 @@
+{"name":"Local: A - Rotate","url":"e:\\C++ code\\A - Rotate.cpp","tests":[{"id":1660383957941,"input":"123","output":"666"},{"id":1660384386215,"input":"999\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\A - Rotate.cpp","group":"local","local":true}

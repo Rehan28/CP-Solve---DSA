@@ -1,0 +1,23 @@
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+//Muku28
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a,b;
+        cin>>a>>b;
+        int x = (a<b)? a:b;
+        int y = (a>b)? a:b;
+        x = (x+x);
+        int r = (x>y)? x:y;
+        cout<<(r*r)<<endl;
+
+    }
+}
