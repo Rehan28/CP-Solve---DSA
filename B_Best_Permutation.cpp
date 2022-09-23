@@ -22,21 +22,12 @@ int main()
     {
         int n;
         cin>>n;
-        int x = 0;
-        if(n%2==0)
+      
+		for(int i=n-3;i>1;i--)
         {
-            for(int i=1;i<=n-2;i+=2)
-            {
-                cout<<(i+1)<<" "<<i<<" ";
-            }
-            cout<<n-1<<" "<<n<<" ";
+             cout<<i<<" ";
         }
-        else{
-            for(int i=1;i<=n-2;i++)
-            {
-                 
-            }
-        }
+		cout<<n-2<<" 1 "<<n-1<<" "<<n;
        nl;
     }
   return 0;

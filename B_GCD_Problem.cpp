@@ -20,41 +20,22 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
-        {
-            cin>>a[i];
-            b[i] = a[i];
-        }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
-            {
-                cout<<(x-b[i])<<" ";
-            }
-            nl;
-        }
-        else
-        {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
-            }
-            nl;
-        }
+        int n;
+        cin>>n;
+      
+       if(n%2==0)
+       {
+        cout<<(n-3)<<" "<<2<<" "<<1<<"\n";
+       }
+       else if(n%4==1)
+       {
+        cout<<(n/2)-1<<" "<<(n/2)+1<<" "<<1<<"\n";
+       }
+       else
+       {
+         cout<<(n/2)-2<<" "<<(n/2)+2<<" "<<1<<"\n";
+       }
+        
     }
   return 0;
  }

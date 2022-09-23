@@ -20,41 +20,35 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+       ll x;
+       cin>>x;
+       ll y = cbrt(x);
+       
+       bool b = false;
+
+       for(ll i=y;i>0;i--)
+       {
+        ll sum = x-(i*i*i);
+        //cout<<sum;
+        //nl;
+        ll remain = cbrt(sum);
+        //cout<<remain;
+        ll y = (remain*remain*remain);
+        if(sum!=0 and y==sum)
         {
-            cin>>a[i];
-            b[i] = a[i];
+            b = true;
+            break;
         }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
-            {
-                cout<<(x-b[i])<<" ";
-            }
-            nl;
-        }
-        else
-        {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
-            }
-            nl;
-        }
+       }
+       if(b)
+       {
+        prints("YES");
+       }
+       else
+       {
+        prints("NO");
+       }
+        
     }
   return 0;
  }

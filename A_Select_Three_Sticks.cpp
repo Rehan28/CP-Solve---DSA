@@ -20,41 +20,27 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+        ll n;
+        cin>>n;
+        ll a[n];
+        cin(a,n);
+        sort(a,a+n);
+        ll gap1 = a[1] - a[0];
+        ll gap2 = a[2] - a[1];
+        ll gap = gap1+gap2;
+        for(int i=0;i<n-2;i++)
         {
-            cin>>a[i];
-            b[i] = a[i];
-        }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
+            gap1 = a[i+1] - a[i];
+            gap2 = a[i+2] - a[i+1];
+            ll x = gap1 + gap2;
+            if(x<gap)
             {
-                cout<<(x-b[i])<<" ";
+                gap = x;
             }
-            nl;
+            
         }
-        else
-        {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
-            }
-            nl;
-        }
+        
+        cout<<gap<<"\n";
     }
   return 0;
  }

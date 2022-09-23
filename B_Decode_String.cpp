@@ -20,41 +20,37 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int x = 0;
+        string s1;
+        for(int i=n-1;i>-1;i--)
         {
-            cin>>a[i];
-            b[i] = a[i];
-        }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
+            if(s[i]=='0')
             {
-                cout<<(x-b[i])<<" ";
-            }
-            nl;
-        }
-        else
-        {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
+               string r;
+               r+= s[i-2];
+               r+=s[i-1];
+                //cout<<r<<endl;
+                int rr = stoi(r);
+                s1 += char(96+rr);
+                //cout<<s1[x];
+                i = i-2;
                 
             }
-            nl;
+            else
+            {
+                s1 += char(int(s[i])+48);
+               
+            }
         }
+        for(int i=s1.size()-1;i>-1;i--)
+        {
+            cout<<s1[i];
+        }
+        nl;
     }
   return 0;
  }

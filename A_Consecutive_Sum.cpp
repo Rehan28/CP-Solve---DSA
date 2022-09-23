@@ -8,7 +8,7 @@ void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
 cout << a[i] << ",";}}void dbg(int x) {cout << "x is " << x << endl; }
 typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
 #define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
+#define cin(a,n) for(int i=1;i<=n;i++){cin>>a[i];}
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define all(v) v.begin(),v.end()
 #define nl cout<<"\n";
@@ -20,41 +20,50 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+        ll n,k;
+        cin>>n>>k;
+        ll a[n+1];
+        cin(a,n);
+        ll sum = 0;
+        ll sum1 = 0;
+        ll x = 0;
+        
+        ll y = 1;
+        ll h = 0;
+        for(int i=1;i<=n-k;i++)
         {
-            cin>>a[i];
-            b[i] = a[i];
-        }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
+            h++;
+           ll r = k*y+h;
+
+           if(r>n)
+           {
+            break;
+           }
+            if(a[i]>a[r])
             {
-                cout<<(x-b[i])<<" ";
+                swap(a[i],a[r]);
             }
-            nl;
+            if(i%k==0)
+            {
+                //swap(a[i],a[r]);
+                h = 0;
+                y++;
+            }
+        }
+        ll sum2 = 0;
+        for(int i=n-k+1;i<=n;i++)
+        {
+            sum2+=a[i];
+        }
+        if(sum1>sum2)
+        {
+            cout<<sum1<<"\n";
         }
         else
         {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
-            }
-            nl;
+            cout<<sum2<<endl;
         }
+        
     }
   return 0;
  }

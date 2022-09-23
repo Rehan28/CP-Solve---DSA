@@ -20,40 +20,43 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+        ll n,u,v;
+        cin>>n>>u>>v;
+        int a[n];
+        cin(a,n);
+        ll mi = min(u,v);
+      
+       int c = 1;
+       int y = 0;
+      
+      
+        for(int i=0;i<n-1;i++)
         {
-            cin>>a[i];
-            b[i] = a[i];
-        }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
-        {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
+            if(abs(a[i]-a[i+1])==0)
             {
-                cout<<(x-b[i])<<" ";
+                c++;
             }
-            nl;
-        }
-        else
-        {
-            for(int i=0;i<3;i++)
+            if(abs(a[i]-a[i+1])==1)
             {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
+                y++;
             }
-            nl;
+        }
+        int x = c+y;
+        //dbg(x);
+        if(x == n )
+        {
+            if(y==0)
+            {
+                cout<<(v+mi)<<"\n";
+            }
+            else
+            {
+                   cout<<mi<<"\n";
+            }
+        }
+        else 
+        {
+            printi(0);
         }
     }
   return 0;

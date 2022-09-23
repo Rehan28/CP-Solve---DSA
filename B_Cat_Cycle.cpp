@@ -20,40 +20,31 @@ int main()
     cin>>t;
    while(t--)
     {
-        int a[3];
-        int b[3];
-        rep(i,0,3)
+        int x,y;
+        cin>>x>>y;
+        int rem = y%x;
+        int mul = y/x;
+        if(y==1)
         {
-            cin>>a[i];
-            b[i] = a[i];
+            printi(1);
         }
-        sort(a,a+3);
-        bool c = false;
-        int x = a[2]+1;
-        if(a[2]==a[0] || a[2]==a[1])
+        else if(x%2==0)
         {
-            c = true;
-        }
-        if(c)
-        {
-            for(int i=0;i<3;i++)
+            if(rem == 0)
             {
-                cout<<(x-b[i])<<" ";
+                printi(x);
             }
-            nl;
+            else
+            {
+                printi(rem);
+            }
         }
         else
         {
-            for(int i=0;i<3;i++)
-            {
-                if(b[i]==x-1)
-                {
-                    cout<<0<<" ";
-                }
-                else cout<<(x-b[i])<<" ";
-                
-            }
-            nl;
+            int mul1 = x/2;
+            y--;
+            int res = (y+(x % 2)*y/mul1)%x+1;
+            printi(res);
         }
     }
   return 0;
