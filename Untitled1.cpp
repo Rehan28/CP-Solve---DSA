@@ -1,8 +1,8 @@
 
 #include<bits/stdc++.h>
-//muku28
+//Muku28
 using namespace std;typedef long long ll;
-void muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
 void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
 void prints(string x){cout<<x<<"\n";}
 void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
@@ -13,30 +13,44 @@ typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define all(v) v.begin(),v.end()
 #define nl cout<<"\n";
-//muku28
+//Muku28
 int main()
 {
-    muku28();
+    Muku28();
+    int n,k;
+    cin>>n>>k;
 
-        ll a[3],b[3],x[3],y[3];
-        rep(i,0,3)
-        {
-            cin>>a[i]>>b[i]>>x[i]>>y[i];
+    string s;
+    s[0] = 'a';
+    //
+    n--;
+    //k--;
+    int i = 1;
+    int x = 0;
+    while(i!=n)
+    {
 
-        }
-        ll t = 0;
-        ll area = (x[0]-a[0])*(y[0]-b[0]);
-        ll interA = (max(t,(min(x[0],x[1])-max(a[0],a[1]))) * max(t,(min(y[0],y[1])-max(b[1],b[0]))));
-        ll interB = (max(t,(min(x[0],x[2])-max(a[0],a[2]))) * max(t,(min(y[0],y[2])-max(b[0],b[2]))));
-        area = area - interA - interB;
-        if(area>0)
+        if(i<=k)
         {
-            prints("YES");
+            s[i] = char((int)s[i-1] + 1 );
+
         }
         else
         {
-            prints("NO");
+            dbg(x);
+            s[i] = s[x];
+            x++;
         }
-
+        if(x==k)
+         {
+          x = 0;
+         }
+        i++;
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<s[i];
+    }
+    nl;
   return 0;
  }

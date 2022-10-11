@@ -1,0 +1,1 @@
+{"name":"Local: Infix To Postfis","url":"e:\\C++ code\\Infix To Postfis.cpp","tests":[{"id":1664135179585,"input":"((((9+8)*(7+6))/((5-4)*(3+2)))*(1+1))","output":""},{"id":1664193670442,"input":"((5+6)-(3+4))","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\Infix To Postfis.cpp","group":"local","local":true}
