@@ -22,25 +22,29 @@ int main()
     {
         int n,x,y;
         cin>>n>>x>>y;
-        
-        if((x>0 and y>0) or (x==0 and y==0))
+        n--;
+        int h = max(x,y);
+        int m = min(x,y);
+        //dbg(h);
+        if(h==0)
         {
-            cout<<-1<<"\n";
+            cout<<-1<<" ";
         }
-        else
+        else if(n%h == 0)
         {
-
-            int u = 1;
-            for(int i=2;i<=n-y;i++)
+            for(int i=0;i<h;i++)
             {
-               
-                if(i%x==0 and i/x!=1)
-                {
-                    u = i;
-                } cout<<u<<" ";
+                cout<<1<<" ";
             }
-            nl;
+            for(int i=0;i<h;i++)
+            {
+                cout<<n<<" ";
+            }
         }
+        else{
+            cout<<-1<<" ";
+        }
+        cout<<"\n";
        
     }
   return 0;

@@ -8,45 +8,37 @@ void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
 cout << a[i] << ",";}}void dbg(int x) {cout << "x is " << x << endl; }
 typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
 #define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=1;i<=n;i++){cin>>a[i];}
+#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define all(v) v.begin(),v.end()
 #define nl cout<<"\n";
-//Muku28
-int main()
-{
-    Muku28();
-     int t;
-    cin>>t;
-   while(t--)
+ll Graph[1000][1000] = {0};
+ll vertices,edges;
+void input()
+{   ll u,v;
+    cout<<"Enter vertices and edges\n";
+    cin>>vertices>>edges;   cout<<"Enter u and v\n";
+    rep(i,0,edges)
     {
-        int n;
-        cin>>n;
-        int a[n+2] = {1};
-        cin(a,n);
-        int c[n+2] = {1};
-        
-        bool b = true;
-      
-        for(int i=1;i<=n+1;i++)
-        {
-          c[i] = (a[i]*a[i-1])/__gcd(a[i],a[i-1]);
-        }
-
-        for(int i=1;i<=n;i++)
-        {
-          if(__gcd(c[i],c[i-1])!=a[i])
-          {
-            b= false;
-          }
-        }
-        if(b)
-        {
-            prints("YES");
-        }else
-        {
-            prints("NO");
-        }
+        cin>>u>>v;
+        Graph[u][v] = 1;
     }
+}
+void output()
+{
+  cout<<"Graph is ::\n";
+  rep(i,0,vertices)
+  {
+    rep(j,0,vertices)
+    {
+        cout<<Graph[i][j]<<" ";
+    }
+    nl;}
+}
+int main()
+{// Rakibul Islam Rehan
+   //ID :: 1902061
+    input();
+    output();
   return 0;
  }

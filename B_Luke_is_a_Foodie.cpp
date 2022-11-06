@@ -22,6 +22,7 @@ int main()
     {
         int n,x;
         cin>>n>>x;
+        //Rakibul Islam Rehan;;;
         
         
     }

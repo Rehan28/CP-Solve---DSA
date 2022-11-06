@@ -8,7 +8,7 @@ void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
 cout << a[i] << ",";}}void dbg(int x) {cout << "x is " << x << endl; }
 typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
 #define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=1;i<=n;i++){cin>>a[i];}
+#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define all(v) v.begin(),v.end()
 #define nl cout<<"\n";
@@ -20,32 +20,46 @@ int main()
     cin>>t;
    while(t--)
     {
-        int n;
+        ll n;
         cin>>n;
-        int a[n+2] = {1};
-        cin(a,n);
-        int c[n+2] = {1};
-        
-        bool b = true;
-      
-        for(int i=1;i<=n+1;i++)
+        ll a[n];
+        ll even = 0;
+        ll sum = 0;
+        int c = 100000000;
+        for(int i=0;i<n;i++)
         {
-          c[i] = (a[i]*a[i-1])/__gcd(a[i],a[i-1]);
+            cin>>a[i];
+            sum += a[i];
+            if(a[i]%2==0)
+            {
+                int x = 0;
+                even++;
+                while(1)
+                {
+                    a[i] =a[i]/2;
+                    x++;
+                    if(a[i]%2!=0)
+                    {
+                        break;
+                    }
+                }
+                if(x<c)
+                {
+                    c = x;
+                }
+            }
         }
-
-        for(int i=1;i<=n;i++)
+        if(even == n)
         {
-          if(__gcd(c[i],c[i-1])!=a[i])
-          {
-            b= false;
-          }
+            cout<<c+(n-1)<<"\n";
         }
-        if(b)
+        else if( even == 0)
         {
-            prints("YES");
-        }else
+            cout<<0<<"\n";
+        }
+        else
         {
-            prints("NO");
+            cout<<even<<"\n";
         }
     }
   return 0;
