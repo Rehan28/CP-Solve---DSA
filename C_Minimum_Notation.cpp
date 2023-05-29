@@ -22,29 +22,46 @@ int main()
     {
         string s;
         cin>>s;
-        vector<pair< int ,bool>> p; 
-        int x = s.size();
-        for(int i=0;i<x-1;i++)
+        string s1 = s;
+        vector<pair<char,int>> p;
+        for(int i=0;i<s.size();i++)
         {
-            p.push_back(make_pair(1,false));
-            int y = i;
-            for(int j=i+1;j<x;j++)
-            {
-                dbg(j);
-                if(s[i]>s[j])
-                {
-                    y = j;
-                }
-                
-            }
-            if(s[i] != '9')
-            {
-                s[i]++;
-            }
-            swap(s[i],s[i+1]);
-            p[i].second = true;
+          p.push_back(make_pair(s[i],i));
         }
-       cout<<s;
+        sort(p.begin(),p.end());
+        sort(s1.begin(),s1.end());
+        /*for(int i=0;i<s.size();i++)
+        {
+          cout<<p[i].first<<" "<<p[i].second<<"\n";
+        }*/
+        int x = p[0].second;
+        int y = 1;
+        for(int i=0;i<s.size();i++)
+        {
+          //cout<<x<<"\n";
+          if(x==i and y<s.size())
+          {
+            x = p[y].second;
+            y++;
+            continue;
+          }
+          else if(x<i and y<s.size())
+          {
+            x = p[y].second;
+            y++;
+            i--;
+            continue;
+          } 
+          if(i<x)
+          {
+            if(s[i]!='9')
+            {
+              s[i]++;
+            }
+          }
+        }
+        sort(s.begin(),s.end());
+        cout<<s<<"\n";
     }
   return 0;
  }

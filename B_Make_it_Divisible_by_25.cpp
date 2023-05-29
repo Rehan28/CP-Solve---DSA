@@ -23,20 +23,58 @@ int main()
         string s;
         cin>>s;
         int c = 0;
-        for(int i=s.size()-1;i>0;i--)
+        int n = s.size() - 1;
+        int pos0 = -1;
+        int req1 = -1;
+        int req2 = -1;
+        bool f = false;
+        for(int i=n;i>-1;i--)
         {
-            if((s[i] =='0') and (s[i-1] =='0' ) || (s[i] =='2') and (s[i-1] =='5'))
+            if(s[i]=='0' and f==false)
             {
-                c = s.size()  - i;
+                pos0 = i;
+                f = true;
+                continue;
+            }
+            if(f and (s[i]=='0' or s[i]=='5'))
+            {
+                req1 = pos0 - i - 1;
+                req1 += (n-pos0);
                 break;
             }
-            else if((s[i] =='5' ) and (s[i-1] =='0') || (s[i] =='7') and (s[i-1] =='5'))
+        }
+        //printi(req1);
+       bool b = false;
+        pos0 = -1;
+        for(int i=n;i>-1;i--)
+        {
+            if(s[i]=='5' and b == false)
             {
-                 c = s.size()  - i;
-                 break;
+                pos0 = i;
+                b = true;
+                continue;
+            }
+            if(b and (s[i]=='7' or s[i]=='2'))
+            {
+                req2 = pos0 - i - 1;
+                req2 += (n-pos0);
+                break;
             }
         }
-        printi(c);
+        //printi(req2);
+       if(req1==-1)
+       {
+        printi(req2);
+       }
+       else if(req2==-1)
+       {
+        printi(req1);
+       }
+       else
+       {
+        printi(min(req1,req2));
+       }
+       
     }
   return 0;
  }

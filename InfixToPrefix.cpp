@@ -61,6 +61,7 @@ void Prefix(string s)
 {
 
 	stack<char> st;
+	stack<char> Prefix;
 	string result;
     for (int i = 0; i < s.length(); i++) {
 		char c = s[i];

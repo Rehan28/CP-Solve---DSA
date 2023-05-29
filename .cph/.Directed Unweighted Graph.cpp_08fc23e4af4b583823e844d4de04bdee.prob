@@ -1,0 +1,1 @@
+{"name":"Local: Directed Unweighted Graph","url":"e:\\C++ code\\Directed Unweighted Graph.cpp","tests":[{"id":1674448475249,"input":"5 8\n3 4\n5 3\n2 4\n1 5\n3 2\n4 2\n3 1\n5 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\Directed Unweighted Graph.cpp","group":"local","local":true}

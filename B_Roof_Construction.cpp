@@ -25,10 +25,30 @@ int main()
     {
     int n;
     cin >> n;
-    int p = 1;
-    while (p * 2 < n) {
-      p <<= 1; // p *= 2
+    int x = n-1;
+    int xx = 0;
+    while(1)
+    {
+      if(x==1)
+      {
+        break;
+      }
+      x = x/2;
+      xx++;
+      
     }
+    int val = pow(2,xx);
+    
+    for(int i=val-1;i>-1;i--)
+    {
+      cout<<i<<" ";
+    }
+    for(int i=val;i<n;i++)
+    {
+      cout<<i<<" ";
+    }
+    nl;
+   
     }
   return 0;
  }

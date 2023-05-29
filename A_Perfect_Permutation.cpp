@@ -9,17 +9,19 @@ cout << a[i] << ",";}}
 int main()
 {
     muku28();
-    int t;
-    cin>>t;
-   while(t--)
+    int n;
+    cin>>n;
+    if(n%2)
     {
-        int n;
-        cin>>n;
-        for(int i=2;i<=n;i++)
+        printi(-1);
+    }
+    else
+    {
+        for(int i=1;i<=n;i = i+2)
         {
-            cout<<i<<" ";
+            cout<<i+1<<" "<<i<<" ";
         }
-        printi(1);
+        cout<<"\n";
     }
   return 0;
  }

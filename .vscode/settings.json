@@ -1,4 +1,10 @@
 {
-    "cmake.configureOnOpen": true,
-    "editor.fontSize": 18
+  "cmake.configureOnOpen": true,
+  "editor.fontSize": 18,
+  "prettier.bracketSpacing": true,
+  "prettier.enableDebugLogs": false,
+  "prettier.enable": true,
+  "files.associations": {
+    "iostream": "cpp"
+  }
 }

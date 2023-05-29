@@ -1,146 +1,84 @@
-// Program to shortest path from a given source vertex ‘s’ to
-// a given destination vertex ‘t’. Expected time complexity
-// is O(V+E).
 #include<bits/stdc++.h>
+#include<ext/pb_ds/tree_policy.hpp>
+#include<ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 
-// This class represents a directed graph using adjacency
-// list representation
-class Graph
-{
-	int V; // No. of vertices
-	list<int> *adj; // adjacency lists
-public:
-	Graph(int V); // Constructor
-	void addEdge(int v, int w, int weight); // adds an edge
-
-	// finds shortest path from source vertex ‘s’ to
-	// destination vertex ‘d’.
-	int findShortestPath(int s, int d);
-
-	// print shortest path from a source vertex ‘s’ to
-	// destination vertex ‘d’.
-	int printShortestPath(int parent[], int s, int d);
-};
-
-Graph::Graph(int V)
-{
-	this->V = V;
-	adj = new list<int>[2*V];
+template<typename T>
+using ord_set = tree<T,null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+typedef long long ll;
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
+void prints(string x){cout<<x<<"\n";}
+void dbg(int x) {cout << "x is " << x << endl; }
+typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
+#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
+#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define all(x) x.begin(), x.end()
+#define f first
+#define s second
+#define no cout << "NO\n"
+#define yes cout << "YES\n"
+#define nl cout<<"\n";
+ll mod = 1e9 + 7;
+bool comp(string a, string b) {
+if (a.size() != b.size()) return a.size() < b.size();
+return a < b;
 }
-
-void Graph::addEdge(int v, int w, int weight)
+//Muku28
+void Rehan()
 {
-	// split all edges of weight 2 into two
-	// edges of weight 1 each. The intermediate
-	// vertex number is maximum vertex number + 1,
-	// that is V.
-	if (weight==2)
-	{
-		adj[v].push_back(v+V);
-		adj[v+V].push_back(w);
-	}
-	else // Weight is 1
-		adj[v].push_back(w); // Add w to v’s list.
+    int n;
+    cin>>n;
+    int a[n];
+    cin(a,n);
+    ord_set<int> st;
+    for(int i=0;i<n;i++)
+    {
+        int ans = 0;
+        if(i%2)
+        {
+            int x = i/2;
+            int y = x+1;
+            ans = *(st.find_by_order(x)) + *(st.find_by_order(y));
+        }
+        else
+        {
+           int x = (i+1)/2;
+           ans = *(st.find_by_order(x));
+        }
+        cout<<ans<<"\n";
+    }
 }
-
-// To print the shortest path stored in parent[]
-int Graph::printShortestPath(int parent[], int s, int d)
-{
-	static int level = 0;
-
-	// If we reached root of shortest path tree
-	if (parent[s] == -1)
-	{
-		cout << "Shortest Path between " << s << " and "
-			<< d << " is " << s << " ";
-		return level;
-	}
-
-	printShortestPath(parent, parent[s], d);
-
-	level++;
-	if (s < V)
-		cout << s << " ";
-
-	return level;
-}
-
-// This function mainly does BFS and prints the
-// shortest path from src to dest. It is assumed
-// that weight of every edge is 1
-int Graph::findShortestPath(int src, int dest)
-{
-	// Mark all the vertices as not visited
-	bool *visited = new bool[2*V];
-	int *parent = new int[2*V];
-
-	// Initialize parent[] and visited[]
-	for (int i = 0; i < 2*V; i++)
-	{
-		visited[i] = false;
-		parent[i] = -1;
-	}
-
-	// Create a queue for BFS
-	list<int> queue;
-
-	// Mark the current node as visited and enqueue it
-	visited[src] = true;
-	queue.push_back(src);
-
-	// 'i' will be used to get all adjacent vertices of a vertex
-	list<int>::iterator i;
-
-	while (!queue.empty())
-	{
-		// Dequeue a vertex from queue and print it
-		int s = queue.front();
-
-		if (s == dest)
-			return printShortestPath(parent, s, dest);
-
-		queue.pop_front();
-
-		// Get all adjacent vertices of the dequeued vertex s
-		// If a adjacent has not been visited, then mark it
-		// visited and enqueue it
-		for (i = adj[s].begin(); i != adj[s].end(); ++i)
-		{
-			if (!visited[*i])
-			{
-				visited[*i] = true;
-				queue.push_back(*i);
-				parent[*i] = s;
-			}
-		}
-	}
-}
-
-// Driver program to test methods of graph class
 int main()
 {
-	// Create a graph given in the above diagram
-	 int t;
+    Muku28();
+     int t = 0;
     cin>>t;
    while(t--)
     {
-        int n,m,s,T;
-        cin>>n>>m>>s>>T;
-        Graph g(m);
-        for(int i=0;i<m;i++)
+    int n;
+    cin>>n;
+    int a[n];
+    cin(a,n);
+    ord_set<int> st;
+    for(int i=0;i<n;i++)
+    {
+        int ans = 0;
+        if(i%2)
         {
-            int x,y,z;
-            cin>>x>>y>>z;
-            //cout<<z<<"\n";
-            g.addEdge(x,y,z);
-            g.addEdge(y,x,z);
+            int x = i/2;
+            int y = x+1;
+            ans = *(st.find_by_order(x)) + *(st.find_by_order(y));
         }
-        cout <<  g.findShortestPath(s,T);
-        cout<<"\n";
-        //cout <<  g.findShortestPath(0,2);
+        else
+        {
+           int x = (i+1)/2;
+           ans = *(st.find_by_order(x));
+        }
+        cout<<ans<<"\n";
+    }
     }
   return 0;
-
-	
-}
+ }

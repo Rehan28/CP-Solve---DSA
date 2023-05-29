@@ -1,0 +1,1 @@
+{"name":"Local: Radix","url":"e:\\C++ code\\Radix.cpp","tests":[{"id":1674450606926,"input":"9\n348 143 361 423 538 128 321 543 366","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\Radix.cpp","group":"local","local":true}

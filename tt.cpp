@@ -1,65 +1,129 @@
+
 #include<bits/stdc++.h>
-using namespace std;
+using namespace std;typedef long long ll;
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
+void prints(string x){cout<<x<<"\n";}
+void dbg(int x) {cout << "x is " << x << endl; }
+typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
+#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
+#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define all(x) x.begin(), x.end()
+#define f first
+#define s second
+#define no cout << "NO\n"
+#define yes cout << "YES\n"
+#define nl cout<<"\n";
+//Muku28
 
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
+  int t;
+  cin>>t;
+  string s1[t],s2[t],s3[t],s4[t];
+  map<string,int> mail;
+  map<int,int> year;
+  map<string,int> year1;
+  map<string,int> blood;
+  map<string,string> blood1;
+  int maxy = 0;
+  int miny = 2024;
+  for(int i=0;i<t;i++)
+  {
+    cin>>s1[i]>>s2[i]>>s3[i]>>s4[i];
+    //On time
+    // day
+    bool time = true;
+    string s11=s1[i];
+    string s;
+    s += s11[0];
+    s +=  s11[1];
+    int x = stoi(s);
+    int day = x;
+    if(x>5)
     {
-        int n;
-        cin>>n;
-        int x[10000];
-        int s = -1;
-        for(int i=0;i<n;i++)
-        {
-            cin>>x[i];
-
-        }
-
-        for(int i=0;i<=n;i++)
+        time = false;
+    }
+    s.clear();
+    // month
+    s += s11[3];
+    s += s11[4];
+    x = stoi(s);
+    if(x>2 or x<1)
     {
-             if(i%2==0)
-            {
-                s = i;
-            }
-
-            if(x[s]!=x[i])
-            {
-                if(x[0]!=x[n-1])
-                {
-                cout<<-1<<endl;
-                s = -3;
-
-                break;
-                }
-                else
-                {
-                    s = -2;
-                }
-
-        }
+        time = false;
     }
-        if(s==-2)
-        {
-           for(int i=1;i<=n;i+=2)
-           {
-               cout<<i+1<<" "<<i<<" ";
-           }
-        }
-
-        else if(s!=-3)
-        {
-           cout<<n<<" ";
-           for(int i=1;i<n;i++)
-           {
-              cout<<i<<" ";
-           }
-
-        }
-        cout<<endl;
-
-
+    s.clear();
+    //year
+    s += s11[6];
+    s += s11[7];
+    s += s11[8];
+    s += s11[9];
+    x = stoi(s);
+    if(x>2023 or x<2023)
+    {
+        time = false;
     }
+    s.clear();
 
-}
+   /*if(time)
+    {
+        int time1 = 24 * 60 * 60;
+        int time2 = 0;
+        //hour
+        s += s11[11];
+        s += s11[12];
+        x = stoi(s);
+        time2 += x * 60 * 60;
+        s.clear();
+        // min
+        s += s11[14];
+        s += s11[15];
+        x = stoi(s);
+        time2 += x * 60;
+        s.clear();
+
+        s += s11[17];
+        s += s11[18];
+        x = stoi(s);
+        time2 += x;
+        s.clear();
+        cout<<time2<<"\n";
+        if(time1<ti)
+    }*/
+    if(time)
+    {
+        s11 = s2[i];
+        s += s11[6];
+        s += s11[7];
+        s += s11[8];
+        s += s11[9];
+        x = stoi(s);
+       if(mail[s2[i]]==0)
+       {
+            year[x]++;
+            year1[s2[i]] = x;
+            maxy = max(maxy,x);
+            miny = min(miny,x);
+            blood[s4[i]]++;
+            blood1[s2[i]] = s4[i];
+       }
+       else
+       {
+        int yy = year1[s2[i]];
+        year[yy]--;
+        year[x]++;
+        string bb = blood1[s2[i]];
+        blood[bb]--;
+        blood[s4[i]]++;
+
+       }
+       mail[s2[i]]++;
+    }
+   // cout<<x<<"\n";
+  }
+
+  return 0;
+ }
+

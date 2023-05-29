@@ -29,15 +29,39 @@ int main()
     {
         int n;
         cin>>n;
-      for(int i=0;i<n;i++)
+        int a[n];
+        for(int i=0;i<n;i++)
+        {
+          a[i] = i;
+        }
+        int b[n] = {0};
+        for(int i=n-1;i>-1;i--)
+        {
+          double x = sqrt(2*a[i]);
+          int y = x;
+         
+          y = y*y;
+          //cout<<y<<"\n";
+          int gap = (y-a[i]);
+          //dbg(gap);
+          if(b[i]==0 and gap>=0 and b[gap]==0)
+          {
+            if(a[i]==1 and b[0]==0)
             {
-            if(i<=(x*x))
-            {
-                
+              gap = 0;
+              swap(a[i],a[gap]);
+              continue;
             }
-           }
-        
-        
+            swap(a[i],a[gap]);
+            b[i] = 1;
+            b[gap] = 1;
+          }
+        }
+        for(int i=0;i<n;i++)
+        {
+          cout<<a[i]<<" ";
+        }
+       cout<<"\n";
     }
   return 0;
  }
