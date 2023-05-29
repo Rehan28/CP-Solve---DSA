@@ -1,113 +1,146 @@
+// Program to shortest path from a given source vertex ‘s’ to
+// a given destination vertex ‘t’. Expected time complexity
+// is O(V+E).
 #include<bits/stdc++.h>
-//Muku28
-using namespace std;typedef long long ll;
-void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
-cout << a[i] << ",";}}void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(v) v.begin(),v.end()
-#define nl cout<<"\n";
-//Muku28
+using namespace std;
+
+// This class represents a directed graph using adjacency
+// list representation
+class Graph
+{
+	int V; // No. of vertices
+	list<int> *adj; // adjacency lists
+public:
+	Graph(int V); // Constructor
+	void addEdge(int v, int w, int weight); // adds an edge
+
+	// finds shortest path from source vertex ‘s’ to
+	// destination vertex ‘d’.
+	int findShortestPath(int s, int d);
+
+	// print shortest path from a source vertex ‘s’ to
+	// destination vertex ‘d’.
+	int printShortestPath(int parent[], int s, int d);
+};
+
+Graph::Graph(int V)
+{
+	this->V = V;
+	adj = new list<int>[2*V];
+}
+
+void Graph::addEdge(int v, int w, int weight)
+{
+	// split all edges of weight 2 into two
+	// edges of weight 1 each. The intermediate
+	// vertex number is maximum vertex number + 1,
+	// that is V.
+	if (weight==2)
+	{
+		adj[v].push_back(v+V);
+		adj[v+V].push_back(w);
+	}
+	else // Weight is 1
+		adj[v].push_back(w); // Add w to v’s list.
+}
+
+// To print the shortest path stored in parent[]
+int Graph::printShortestPath(int parent[], int s, int d)
+{
+	static int level = 0;
+
+	// If we reached root of shortest path tree
+	if (parent[s] == -1)
+	{
+		cout << "Shortest Path between " << s << " and "
+			<< d << " is " << s << " ";
+		return level;
+	}
+
+	printShortestPath(parent, parent[s], d);
+
+	level++;
+	if (s < V)
+		cout << s << " ";
+
+	return level;
+}
+
+// This function mainly does BFS and prints the
+// shortest path from src to dest. It is assumed
+// that weight of every edge is 1
+int Graph::findShortestPath(int src, int dest)
+{
+	// Mark all the vertices as not visited
+	bool *visited = new bool[2*V];
+	int *parent = new int[2*V];
+
+	// Initialize parent[] and visited[]
+	for (int i = 0; i < 2*V; i++)
+	{
+		visited[i] = false;
+		parent[i] = -1;
+	}
+
+	// Create a queue for BFS
+	list<int> queue;
+
+	// Mark the current node as visited and enqueue it
+	visited[src] = true;
+	queue.push_back(src);
+
+	// 'i' will be used to get all adjacent vertices of a vertex
+	list<int>::iterator i;
+
+	while (!queue.empty())
+	{
+		// Dequeue a vertex from queue and print it
+		int s = queue.front();
+
+		if (s == dest)
+			return printShortestPath(parent, s, dest);
+
+		queue.pop_front();
+
+		// Get all adjacent vertices of the dequeued vertex s
+		// If a adjacent has not been visited, then mark it
+		// visited and enqueue it
+		for (i = adj[s].begin(); i != adj[s].end(); ++i)
+		{
+			if (!visited[*i])
+			{
+				visited[*i] = true;
+				queue.push_back(*i);
+				parent[*i] = s;
+			}
+		}
+	}
+}
+
+// Driver program to test methods of graph class
 int main()
 {
-    Muku28();
-     int t;
+	// Create a graph given in the above diagram
+	 int t;
     cin>>t;
-    int i = 1;
-   while(i<=t)
+   while(t--)
     {
-        
-        int a[3],k;
-        cin(a,3);
-        cin>>k;
-        sort(a,a+3);
-        int sum = a[0] + a[1] + a[2];
-        if(sum%3==0)
+        int n,m,s,T;
+        cin>>n>>m>>s>>T;
+        Graph g(m);
+        for(int i=0;i<m;i++)
         {
-            int c = 0;
-
-          int x = sum/3;
-
-          while(1)
-          {
-            if(a[2]<k)
-            {
-                break;
-            }
-            if(a[0]==x)
-            {
-                c++;
-                break;
-            }
-            if(a[0]>x)
-            {
-               // a[2] = a[2] + k;
-               break;
-            }
-            a[0] = a[0] + k;
-            a[2] = a[2] - k;
-            
-          }
-          if(a[1]>x)
-          {
-            while(1)
-          {
-            
-            if(a[0]==x)
-            {
-                c++;
-                break;
-            }
-            if(a[0]>x)
-            {
-               // a[2] = a[2] + k;
-               break;
-            }
-            a[0] = a[0] + k;
-            a[1] = a[1] - k;
-            
-          }
-          }
-          while(1)
-          {
-            if(a[2]<k)
-            {
-                break;
-            }
-            if(a[1]==x)
-            {
-                c++;
-                break;
-            }
-            if(a[1]>x)
-            {
-                //a[2] = a[2] + k;
-                break;
-            }
-            a[1] = a[1] + k;
-            a[2] = a[2] - k;
-            
-          }
-          if(c==2)
-          {
-             cout<<"Case "<<i<<": Peaceful"<<"\n";
-          }
-          else
-          {
-            cout<<"Case "<<i<<": Fight"<<"\n";
-          }
+            int x,y,z;
+            cin>>x>>y>>z;
+            //cout<<z<<"\n";
+            g.addEdge(x,y,z);
+            g.addEdge(y,x,z);
         }
-        else
-        {
-            cout<<"Case "<<i<<": Fight"<<"\n";
-        }
-       
-        i++;
+        cout <<  g.findShortestPath(s,T);
+        cout<<"\n";
+        //cout <<  g.findShortestPath(0,2);
     }
   return 0;
- }
+
+	
+}

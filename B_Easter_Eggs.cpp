@@ -25,10 +25,14 @@ int main()
         cout<<s;
     }
     int x = n%7;
-    for(int i=0;i<x;i++)
+    //cout<<x<<"\n";
+    string s1[7] = {{"G"},{"GB"},{"YGB"},{"YGBI"},{"OYGBI"},{"OYGBIV"},{"ROYGBIV"}};
+    if(n!=7 and x!=0)
     {
-        cout<<s[i];
+         cout<<s1[x-1];
     }
+   
+    
     nl;
   return 0;
  }
