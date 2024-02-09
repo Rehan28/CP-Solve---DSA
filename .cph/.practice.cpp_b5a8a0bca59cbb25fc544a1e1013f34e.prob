@@ -1,1 +1,1 @@
-{"name":"Local: practice","url":"e:\\C++ code\\practice.cpp","tests":[{"id":1670401961408,"input":"\nwwwvvvvvv\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\practice.cpp","group":"local","local":true}
+{"name":"Local: practice","url":"e:\\C++ code\\practice.cpp","tests":[{"id":1670401961408,"input":"1\n18","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\practice.cpp","group":"local","local":true}

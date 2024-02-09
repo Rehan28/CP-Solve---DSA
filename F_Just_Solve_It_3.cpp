@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
@@ -13,32 +12,33 @@ typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
 ll mod = 1e9 + 7;
 
 //Muku28
+const int x = 1e6 + 9,m=1e6;
+int f[x+1];
+int d[x+1];
 int Rehan(){
     int n;
     cin>>n;
-    int a[n];
-    cin(a,n);
-    map<int, int> mp;
-    int x = 0;
-    for (int i = 0; i < n-1;i++){
-        if(a[i]!=a[i+1])
-        {
-            for (int j = i; j >= x;j--)
-            {
-                mp[j] = i + 1;
-                //cout <<i<<" "<< j << "\n";
-            }
-            x = i + 1;
+    for (int i = 0; i < n;i++){
+        int a;
+        cin >> a;
+        f[a]++;
+    }
+    for (int i = 1; i <= x;i++){
+        for (int j = i; j <= x;j=j+i){
+            d[i] += f[j];
         }
     }
-    cout << mp[2] << "\n";
+    for (int i = 1; i <= m;i++){
+        cout << d[i] << " ";
+    }
+    cout << '\n';
     return 0;
 }
 //--------------28--------------//
 int main(){
     Muku28();
     int t = 1;
-    cin>>t;
+    //cin>>t;
     while(t--){
         Rehan();
     }

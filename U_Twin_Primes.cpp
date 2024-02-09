@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
@@ -18,20 +17,7 @@ int Rehan(){
     cin>>n;
     int a[n];
     cin(a,n);
-    map<int, int> mp;
-    int x = 0;
-    for (int i = 0; i < n-1;i++){
-        if(a[i]!=a[i+1])
-        {
-            for (int j = i; j >= x;j--)
-            {
-                mp[j] = i + 1;
-                //cout <<i<<" "<< j << "\n";
-            }
-            x = i + 1;
-        }
-    }
-    cout << mp[2] << "\n";
+
     return 0;
 }
 //--------------28--------------//
