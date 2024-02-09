@@ -1,12 +1,6 @@
-#include<bits/stdc++.h>
-#include<ext/pb_ds/tree_policy.hpp>
-#include<ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
-using namespace std;
 
-template<typename T>
-using ord_set = tree<T,null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-typedef long long ll;
+#include<bits/stdc++.h>
+using namespace std;typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
 void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
 void prints(string x){cout<<x<<"\n";}
@@ -26,59 +20,163 @@ bool comp(string a, string b) {
 if (a.size() != b.size()) return a.size() < b.size();
 return a < b;
 }
-//Muku28
-void Rehan()
+bool is_arraySorted(int a[],int n)
 {
-    int n;
-    cin>>n;
-    int a[n];
-    cin(a,n);
-    ord_set<int> st;
-    for(int i=0;i<n;i++)
-    {
-        int ans = 0;
-        if(i%2)
-        {
-            int x = i/2;
-            int y = x+1;
-            ans = *(st.find_by_order(x)) + *(st.find_by_order(y));
-        }
-        else
-        {
-           int x = (i+1)/2;
-           ans = *(st.find_by_order(x));
-        }
-        cout<<ans<<"\n";
-    }
+  if(n==1)
+  {
+    return 1;
+  }
+  return (a[0] < a[1]) and is_arraySorted(a+1,n-1);
+  //akhane a+1 dhara bujay j first index samne nia gachi
+  // jar jonno array size o 1 kobcy
 }
+// dec order
+void number(int n)
+{
+  if(n==0)
+  {
+    return;
+  }
+  cout << n << "\n";
+  number(n - 1);
+}
+// incri order
+void incri(int n)
+{
+  if(n==0)
+  {
+    return;
+  }
+  incri(n - 1);
+  cout << n << "\n";
+
+}
+int first_OC(int a[],int i,int val,int n)
+{
+  if(i==n)
+  {
+    return -1;
+  }
+  if(a[i]==val){
+      return i;
+  }
+  return first_OC(a, i + 1, val, n);
+}
+int last_OC(int a[],int i,int val)
+{
+  if(i==-1)
+  {
+    return -1;
+  }
+  if(a[i]==val){
+      return i;
+  }
+  return last_OC(a, i - 1, val);
+}
+// reverse string
+void revese(string s)
+{
+    if(s.size()==0)
+    {
+      return;
+    }
+    string rev = s.substr(1);
+    revese(rev);
+    cout << s[0];
+}
+// j khane pi sei khane 3.14 bosabo
+void replacepi(string s)
+{
+  if(s.size()==0)
+  {
+      return;
+  }
+  if(s[0]=='p' and s[1]=='i')
+  {
+      cout << "3.14";
+      replacepi(s.substr(2));
+  }
+  else
+  {
+      cout << s[0];
+      replacepi(s.substr(1));
+  }
+}
+// Tower of hanoi
+int hanoi(int n,char src,char des,char helper)
+{
+  if(n==0)
+  {
+      return 0;
+  }
+  int sum = 1;
+  sum += hanoi(n - 1, src, helper, des);
+  //cout << "From : " << src << " " << des << "\n";
+  sum += hanoi(n - 1, helper, des, src);
+  return sum;
+}
+// remove duplicate from string
+string removeDup(string s)
+{
+  if(s.size()==0)
+  {
+    return "";
+  }
+  char c = s[0];
+  string ans = removeDup(s.substr(1));
+  if(c==ans[0])
+  {
+    return ans;
+  }
+  return c+ans;
+}
+// Move all X last
+string moveX(string s)
+{
+  if(s.size()==0)
+  {
+    return "";
+  }
+  char c = s[0];
+  string ans = moveX(s.substr(1));
+  if(c=='x')
+  {
+    return ans + c;
+  }
+  return c+ans;
+}
+// all sub sequence == number of subsequence is 2^n
+void subseq(string s,string ans)
+{
+   if(s.size()==0)
+   {
+     cout << ans;
+     nl;
+     return;
+   }
+   char ch = s[0];
+   string next = s.substr(1);
+   subseq(next,ans);
+   subseq(next, ans + ch);
+}
+//Muku28
+int Rehan()
+{
+     string s;
+     cin>>s;
+     subseq(s, "");
+     return 0;
+}
+//--------------28--------------//
 int main()
 {
     Muku28();
-     int t = 0;
-    cin>>t;
-   while(t--)
+    int t = 1;
+   // cin>>t;
+    while(t--)
     {
-    int n;
-    cin>>n;
-    int a[n];
-    cin(a,n);
-    ord_set<int> st;
-    for(int i=0;i<n;i++)
-    {
-        int ans = 0;
-        if(i%2)
-        {
-            int x = i/2;
-            int y = x+1;
-            ans = *(st.find_by_order(x)) + *(st.find_by_order(y));
-        }
-        else
-        {
-           int x = (i+1)/2;
-           ans = *(st.find_by_order(x));
-        }
-        cout<<ans<<"\n";
+        Rehan();
     }
-    }
-  return 0;
+		return 0;
  }
+

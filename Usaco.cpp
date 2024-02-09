@@ -25,35 +25,46 @@ void setIO(string s) {
 ///////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-  Muku28();
-  setIO("citystate");
-  int n;
-  cin >> n;
-  vector<pair<string, string>> vp;
-  map<string, int> mp;
-  for (int i = 0; i < n;i++)
-  {
-    string s, c;
-    cin >> s >> c;
-    string ss;
-    ss += s[0];
-    ss += s[1];
-    vp.push_back(make_pair(ss, c));
-    if(ss!=c)
+    Muku28();
+    setIO("convention");
+    ll n, m, c;
+    cin >> n >> m >> c;
+    ll a[n];
+    cin(a, n);
+    sort(a, a + n);
+    ll lo = 0;
+    ll hi = 1e11;
+    ll mid;
+    int x = 10;
+    while(hi>lo)
     {
-       ss += c;
-       mp[ss]++;
+      mid = lo + (hi - lo) / 2;
+      ll last = a[0];
+      ll bus = 1;
+      ll cc = 1;
+      for (int i = 1 ; i < n;i++)
+      {
+        if(a[i]-last<=mid and cc!=c)
+        {
+          cc++;
+        }
+        else
+        {
+          bus++;
+          last = a[i];
+          cc = 1;
+        }
+      }
+      //cout << mid << " " << bus << "\n";
+      if(bus<=m)
+      {
+        hi = mid;
+      }
+      else
+      {
+        lo = mid + 1;
+      }
     }
-  }
-  int sum = 0;
-  for (int i = 0; i < n;i++)
-  {
-    string s = vp[i].first;
-    string ss = vp[i].second;
-    ss += s;
-    sum += mp[ss];
-  }
-  cout << sum/2;
-  nl;
-  return 0;
+    cout << lo << "\n";
+    return 0;
  }

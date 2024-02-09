@@ -24,16 +24,17 @@ int main()
    while(t--)
    {
     int a,b,c;
-    cin>>a>>b>>c;
+    cin >> a >> b >> c;
     if(a+b==c)
     {
-        cout<<'+'<<"\n";
+        cout << "+"
+             << "\n";
     }
     else
     {
-        cout<<'-'<<"\n";
+         cout << "-"
+             << "\n";
     }
    }
-    
-  return 0;
+    return 0;
  }

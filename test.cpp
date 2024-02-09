@@ -19,27 +19,86 @@ bool comp(string a, string b) {
 if (a.size() != b.size()) return a.size() < b.size();
 return a < b;
 }
-
 //Muku28
+int Rehan()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    cin(a,n);
+    for (int i = 0; i < n;i++)
+    {
+        vector<int> v;
+        vector<int> v1;
+        sort(v.begin(), v.end());
+        int sum = 0;
+        for (int j = 0; j <= i;j++)
+        {
+            v.push_back(a[i]);
+            sum += a[i];
+        }
+        if(sum%3==0)
+        {
+            sum = sum / 3;
+            int now = v.size();
+            int val = 0; 
+            bool f = false;
+            for (int j = 0; j < now;j++)
+            {
+                val = v[j];
+                if(val>sum)
+                {
+                    continue;
+                }
+                else if(val==sum)
+                {
+                    v1.push_back(j);
+                    break;
+                }
+                else
+                {
+                    int fast = j + 1;
+                    for (int k = j + 1; k < now;k++)
+                    {
+                        val += v[k];
+                        if(val>sum)
+                        {
+                            if(k==first)
+                            {
+                               break;
+                            }
+                            val -= v[k];
+                            continue;
+                        }
+                        else if(val==sum)
+                        {
+                            v1.push_back(k);
+                            break;
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            cout << 0 << "\n";
+        }
+    }
+    return 0;
+}
+//--------------28--------------//
 int main()
 {
     Muku28();
-    ll n;
-    cin >> n;
-    map<ll, ll> prime;
-    ll c = 0;
-    for (ll i = 2; i*i <= n;i++)
+    int t = 1;
+    cin>>t;
+    while(t--)
     {
-      if(prime[i]==0 and i*i<n)
-      {
-        c++;
-        cout << i << " ";
-        for (ll j = i*i; j <= n;j += i)
-        {
-          prime[j] = 1;
-        }
-      }
+        Rehan();
     }
-    cout << c << "\n";
-    return 0;
+		return 0;
  }

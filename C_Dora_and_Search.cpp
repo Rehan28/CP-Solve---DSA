@@ -30,16 +30,18 @@ int main()
         int l = 0;
         int r = n;
         bool f = false;
+        int x = 1;
+        int y = n ; 
         while(1)
-        {
-            int x = *max_element(a+l,a+r);
-            int y = *min_element(a+l,a+r); 
-            //cout<<x<<" "<<y<<"\n";
-            if((r-1)==l)
+        { 
+            if(r<=l)
             {
                 f = true;
                 break;
             }
+           
+           // cout<<x<<" "<<y<<"\n";
+           
             if(a[l]!=x and a[l]!=y and a[r-1]!=x and a[r-1]!=y)
             {
                 cout<<(l+1)<<" "<<r<<"\n";
@@ -49,13 +51,25 @@ int main()
             {
                // dbg(l);
                 //dbg(r);
-                if(a[l]==x or a[l]==y)
+                if(a[l]==x)
                 {
                     l++;
+                    x++;
                 }
-               if(a[r-1]==x or a[r-1]==y)
+                else if(a[l]==y)
+                {
+                    l++;
+                    y--;
+                }
+                if(a[r-1]==x)
                 {
                     r--;
+                    x++;
+                }
+                else if(a[r-1]==y)
+                {
+                    r--;
+                    y--;
                 }
             }
            

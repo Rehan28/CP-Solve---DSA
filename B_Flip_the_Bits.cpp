@@ -28,56 +28,54 @@ int main()
         cin>>s;
         string b;
         cin>>b;
-        bool f = true;
-        int i=0;
+        int legal[n] = {0};
         int one = 0;
         int zero = 0;
-        for(i=0;i<n;i++)
+        for (int i = 0; i < n;i++)
         {
-           
-            if(s[i]!=b[i])
-            {
-                //cout<<i<<"\n";
-                break;
-            }
-        }
-        for(;i<n;i++)
-        {
-            if(s[i]=='1')
-            {
-                one++;
-            }
-            else if(b[i]=='1')
+            if(s[i]=='0')
             {
                 zero++;
             }
-            if(s[i]==b[i])
+            else
             {
-                //printi(i);
-                break;
+                one++;
+            }
+            if(one==zero)
+            {
+                legal[i] = 1;
             }
         }
-        if(one!=zero)
+        int x = 1;
+        bool f = true;
+        for (int i = n - 1; i > -1;i--)
         {
-            f = false;
-        }
-        for(;i<n;i++)
-        {
-            if(s[i]!=b[i])
+            if(s[i]!=b[i] and x==1)
             {
-                //printi(i);
-                break;
+                x = 0;
+                if(legal[i]==0)
+                {
+                    f = false;
+                    break;
+                }
+            }
+            else if(s[i]==b[i] and x == 0)
+            {
+                x = 1;
+                if(legal[i]==0)
+                {
+                    f = false;
+                    break;
+                }
             }
         }
-       
-        //printi(i);
-        if(i==n and f==true)
+        if(f)
         {
-            prints("YES");
+            yes;
         }
         else
         {
-            prints("NO");
+            no;
         }
     }
   return 0;

@@ -14,42 +14,39 @@ typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
 #define no cout << "NO\n"
 #define yes cout << "YES\n"
 #define nl cout<<"\n";
+ll mod = 1e9 + 7;
+bool comp(string a, string b) {
+if (a.size() != b.size()) return a.size() < b.size();
+return a < b;
+}
 //Muku28
+int Rehan(int x)
+{
+    ll n,k;
+    cin>>n>>k;
+    ll a[n];
+    cin(a,n);
+    ll sum = 0;
+    ll mx = INT_MIN;
+    for (int i = 0; i < n;i++)
+    {
+      sum += a[i];
+      mx = max(a[i], mx);
+    }
+    sum += (k - 1) * mx;
+    cout << "Case " << x << ": " << sum << "\n";
+
+    return 0;
+}
+//--------------28--------------//
 int main()
 {
-  int t;
-  cin>>t;
-  int ii = 1;
-  while(ii<=t)
-  {
-    long long int  n,k;
-    cin>>n>>k;
-    long long int sum = 0;
-    long long int a[n];
-    cin(a,n);
-    for(int i=0;i<n;i++)
+    Muku28();
+    int t = 1;
+    cin>>t;
+    for (int i = 1; i <= t;i++)
     {
-        sum += a[i];
+      Rehan(i);
     }
-    long long int extra = a[0];
-    ll ex =0;
-    ll ex1 = 0;
-    for(int i=0;i<n-1;i++)
-    {
-      ex += a[i];
-      ex1 += a[i+1];
-      if(ex<ex1)
-      {
-        extra += (ex1-ex);
-        ex = 0;
-        ex1 =  0;
-      }
-    }
-    extra = (extra * (k-1));
-    cout<<"Case "<<ii<<": "<<(sum+extra)<<"\n";
-   ii++;
-
-  }
-  return 0;
+      return 0;
  }
-
