@@ -253,14 +253,11 @@ int friendpair(int n)
 }
 // 01 knapsack with recursion
 // problem is a thif want to get more valuable item with minimum weight
-int knapsack(int value[],int weight[],int n,int capacity)
-{
-  if(n==0 or weight==0)
-  {
+int knapsack(int value[],int weight[],int n,int capacity){
+  if(n==0 or weight==0){
     return 0;
   }
-  if(capacity-weight[n-1]<0)
-  {
+  if(capacity-weight[n-1]<0){
     return knapsack(value, weight, n - 1, capacity);
   }
   return max(knapsack(value, weight, n - 1, (capacity - weight[n - 1]))+value[n-1], knapsack(value, weight, n - 1, capacity));

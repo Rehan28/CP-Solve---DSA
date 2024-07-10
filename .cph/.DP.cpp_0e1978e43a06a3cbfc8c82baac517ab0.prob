@@ -1,0 +1,1 @@
+{"name":"Local: DP","url":"e:\\C++ code\\DP.cpp","tests":[{"id":1715854429557,"input":"3 8\n3 30\n4 50\n5 60","output":"3524578"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\DP.cpp","group":"local","local":true}

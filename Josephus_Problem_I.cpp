@@ -1,37 +1,50 @@
-#include<bits/stdc++.h>
-//Muku28
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void show(int a[], int arraysize){for (int i = 0; i < arraysize; ++i){
-cout << a[i] << ",";}}void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<int> vi;typedef vector<string> vs;typedef pair<int, int> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(v) v.begin(),v.end()
-#define nl cout<<"\n";
-//Muku28
-int main()
-{
-    Muku28();
-     int n;
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1000000007
+
+void solve(int test) {
+    int n;
     cin>>n;
-    for(int i=1;i<=n;i++)
-    {
-        if(i%2==0)
-        {
-            cout<<i<<" ";
-        }
+    set<int> st;
+    for (int i = 1; i <= n;i++){
+        st.insert(i);
+    } 
+    int x = 0;
+    while (st.size()){
+       if(st.size()==1){
+           auto it = st.begin();
+           cout << *it << "\n";
+           st.clear();
+       }
+       vector<int> v;
+       for (auto it = st.begin(); it != st.end();it++){
+           if(x==1){
+               cout << *it << " ";
+               x = 0;
+               v.push_back(*it);
+           }
+           else{
+               x = 1;
+           }
+       }
+       for (int i = 0; i < v.size();i++){
+           st.erase(v[i]);//same somoy delete korle position nia problem hoy.
+       }
     }
-    for(int i=1;i<=n;i++)
-    {
-        if(i%2!=0)
-        {
-            cout<<i<<" ";
-        }
+}
+int main() {
+    Muku28();
+    int test=1;
+    //cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
     }
-    nl;
-  return 0;
- }
+    return 0;
+}

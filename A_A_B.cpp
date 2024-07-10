@@ -19,14 +19,13 @@ int main()
 {
     Muku28();
      int t;
-    cin>>t;
-   while(t--)
-    {
-        string s;
-        cin>>s;
-        int x = int(s[0]) - '0';
-        int y = int(s[2]) - '0';
-        cout<<x+y<<"\n";
+     t = 1;
+     // cin>>t;
+     while (t--)
+     {
+         int a, b;
+         cin >> a >> b;
+         cout << a + b << "\n";
     }
   return 0;
  }

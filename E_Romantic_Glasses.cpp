@@ -1,72 +1,44 @@
-#include<bits/stdc++.h>
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define nl cout<<"\n";
-ll mod = 1e9 + 7;
-bool comp(string a, string b) {
-if (a.size() != b.size()) return a.size() < b.size();
-return a < b;
-}
-//Muku28
-int Rehan()
-{
-    ll n;
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1
+#define int long long
+
+void solve(int test) {
+    int n;
     cin>>n;
-    ll a[n];
+    int a[n];
     cin(a,n);
-    ll odd[n]={0};
-    ll even[n]={0};
-    for (int i = 0; i < n-1;i++)
-    {
-       if(i%2)
-       {
-           odd[i];
-       }
+    for (int i = 0; i < n;i = i+2){
+        a[i] = -a[i];
     }
-    unordered_set<int> st;
-    ll sum = 0;
-    bool f = false;
-    for (int i = 0; i < n; i++) 
-    {
-        sum += dif[i];
-        if (sum == 0 || st.find(sum) != st.end())
-        {
-             f = true;
-             break;
+    int pfx[n];
+    pfx[0] = a[0];
+    map<int, int> mp;
+    mp[0] = 1;
+    mp[a[0]] = 1;
+    for (int i = 1; i < n;i++){
+        pfx[i] = pfx[i - 1] + a[i];
+        if(mp[pfx[i]]){
+            yes;
+            return;
         }
-        st.insert(sum);
+        mp[pfx[i]] = 1;
     }
-    if(f)
-    {
-        yes;
-    }
-    else
-    {
-        no;
+    no;
+}
+int32_t main() {
+    Muku28();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
     }
     return 0;
 }
-//--------------28--------------//
-int main()
-{
-    Muku28();
-    int t = 1;
-    cin>>t;
-    while(t--)
-    {
-        Rehan();
-    }
-		return 0;
- }

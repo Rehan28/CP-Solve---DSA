@@ -1,0 +1,1 @@
+# triangulation, diagonals in a polygon

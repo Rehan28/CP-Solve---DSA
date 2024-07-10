@@ -1,0 +1,1 @@
+{"name":"Local: segment_tree_problem","url":"e:\\C++ code\\segment_tree_problem.cpp","tests":[{"id":1710432786138,"input":"1\n5\n1 2 4 4 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\C++ code\\segment_tree_problem.cpp","group":"local","local":true}

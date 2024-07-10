@@ -10,7 +10,7 @@ typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
 ll mod = 1e9 + 7;
 
 void NOD(){
-    // Number of devisor
+    //Number of devisor
     // O(squrt());
     /* Prime factorization dia ber kora jay! jamon 
     12 ar prime fact = 2^2 * 3^1 then NOD = 3*2 = 6 ta
@@ -34,7 +34,7 @@ void NOD(){
     // With Prime Fact
     //NodWithPrimeFact();
 }
-//How to find the number of integers under n that has an odd number of divisors?
+#How to find the number of integers under n that has an odd number of divisors?
 void NofOddDevisorUnderN(){
     /*Ovsarvation dakho j kokhon odd number of devisor asbe 
     12 ar jonno 
@@ -76,11 +76,11 @@ bool isPrime()
     }
     return true;
 }
-// Smallest prime of a number --> SPF.
-// First divisor is smallest prime because if that is not prime then there 
-//is a previous prime devisor
+#Smallest prime of a number --> SPF.
+First divisor is smallest prime because if that is not prime then there 
+is a previous prime devisor
 
-//Prime Factor or skeleton View of Number
+#Prime Factor or skeleton View of Number
 void PrimeFactor(){
     int n;
     cin >> n;
@@ -103,9 +103,9 @@ void PrimeFactor(){
         cout << v[i] << " ";
     }
 }
-//n^2+n+41 ai equation dia 0 to 39 n bosale sob prime paoa jay --
+#n^2+n+41 ai equation dia 0 to 39 n bosale sob prime paoa jay --
 
-//NOD With Prime Facror
+#NOD With Prime Facror
 void NodWithPrimeFact()
 {
     //ata tamon dorkar nai, But NT ty sob Prime factor Dia cinta kora uchid
@@ -139,15 +139,15 @@ void NodWithPrimeFact()
     }
     cout << ans << "\n";
 }
-// --> prime p^2 ar devisor = 3
-// amra ulta o dakhte pari evabe j 4 ta devisor ar number khujty bolle
-// amra p^3 or p*q two prime number then  ivabe cobination dia amra number gula khujte pari
+#--> prime p^2 ar devisor = 3
+amra ulta o dakhte pari evabe j 4 ta devisor ar number khujty bolle
+amra p^3 or p*q two prime number then  ivabe cobination dia amra number gula khujte pari
 
 
-// n ar moddy koto gula devisor thakte pare hisbar jonno cubic root of n 
+#n ar moddy koto gula devisor thakte pare hisbar jonno cubic root of n 
 
 
-//------Sieve-----
+#------#Sieve-----
 
 /*However, for the simple implementations of the 
 Sieve of Eratosthenes using a vector<bool> is faster.
@@ -155,7 +155,7 @@ Sieve of Eratosthenes using a vector<bool> is faster.
 FOR USE :: odd,sqrt, optimiztion and char…..segment sieve use kori nai!*/
 
 
-// method to find prime number under n
+#method to find prime number under n
 bool f[100000000];
 void Sieve(){
     //basic Sieve 1e7 porjonto 1s a kaj kore -->O(nlogn)
@@ -176,11 +176,11 @@ void Sieve(){
     cout << numberOfprime << "\n";
     cout << 1.0 * (clock() - st) / CLOCKS_PER_SEC << "\n";//execution Time print korar jonno
 }
-// aro optimez sieve 
-// atar time coplexity proof onek hard ,O(blogn) proof kora jay easyly
-// harmonic series follow kore jamon n(1+1/2+1/3+1/4---)
-// atare amra n(1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 +1/4 --- ) aro boro kore series banate pari
-// then 1 + 2ta the 1 + then 4 ta thene 1 + then 8 ta theke 1 emne logn a solution ase
+#aro optimez sieve 
+atar time coplexity proof onek hard ,O(blogn) proof kora jay easyly
+harmonic series follow kore jamon n(1+1/2+1/3+1/4---)
+atare amra n(1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 +1/4 --- ) aro boro kore series banate pari
+then 1 + 2ta the 1 + then 4 ta thene 1 + then 8 ta theke 1 emne logn a solution ase
 void Osieve(){
     int n = 1e8;
     // O(nloglogn)
@@ -196,7 +196,7 @@ void Osieve(){
         }
     }
 }
-//YouKnowWho ar seive --
+#YouKnowWho ar seive --
 const int N = 2e7 + 9;
 bitset<N> is_prime;
 void Best_sieve() {
@@ -206,16 +206,17 @@ void Best_sieve() {
   }
   for (int i = 2; i * i < N; i++) {
     if (is_prime[i]) {
-      for (int j = i + i; j < N; j += i) {
+      for (int j = i * i; j < N; j += i) {//i+i chilo
         is_prime[j] = false;
       }
     }
   }
 }
-//---Divisor Count for integers from 1 to N using sieve
+#Divisor Count for integers from 1 to N using sieve
 
-//normally korle O(nsqrt(n)) lagbe
-//basic seive dia korbo,jkhon bad ditechi tokhon oder count kore jabo 
+normally korle O(nsqrt(n)) lagbe
+basic seive dia korbo,jkhon bad ditechi tokhon oder count kore jabo 
+
 int d[101];
 void NODofN(){
     int n = 100;
@@ -236,7 +237,7 @@ void NODofN(){
     // divisor ar sum ber korte hole just sum += d[i]
 }
 
-//---Prime Factorization using Sieve
+#Prime Factorization using Sieve
 bool ft[101];
 void PrimeFactUsingS_My(){
     // ata ami banailam but atay akta problem ache
@@ -285,15 +286,55 @@ void PrimeFactUsingS_YouKnow(){
     
 }
 
-//-----------------> Prime Gap
-//https://en.wikipedia.org/wiki/Prime_gap
-// Akhane bakkha ache
-// Prime gap onek kom hoy --
-// ata --> O(log n^2)
+#Prime Gap
+https://en.wikipedia.org/wiki/Prime_gap
+Akhane bakkha ache
+Prime gap onek kom hoy --
+ata --> O(log n^2)
 
-// # sqrt function int a r jonno ll ar jonno sqrtl use korte pari.
-//  onek somoy sqrt function vul dite pare 10 ar jaygay 9.99 dite pare star jonno
-//###  p = sqrt(n); while(p*p<)p++; while(p*p>)p--; kore safe thaka jay
+#sqrt function int a r jonno ll ar jonno sqrtl use korte pari.
+ onek somoy sqrt function vul dite pare 10 ar jaygay 9.99 dite pare star jonno
+###  p = sqrt(n); while(p*p<)p++; while(p*p>)p--; kore safe thaka jay
+
+
+##GCD and LCM :
+largest positive integer that divides each of the integers.
+__gcd(a,b) --> O(log(min(a,b)))
+--> LCM = is the smallest positive integer that is divisible by both a and b.
+why gcd(a,b)*lcm(a,b) = a*b?
+amra jani protita number re prime dia represent kora jay jamon..
+a = 2^3 * 5^3 * 7^2
+b = 2^6 * 5^2 * 3^2
+toh gcd hoilo maximum divisor - 2^3*5^2 or = p^min(a,b-power)*p^--
+lcm hoilo minimum multiple mane sob divisor ar mul = 2^max(3,6)*3^(max(0,2))*7--*5
+lcm*gcd = p^min(a,b)+max(a+b)---
+==> p^a+b --2 ta number ar jonno
+=> THAT  power is mul ==> lcm*gcd = a*b
+so, lcm = (a*b)/gcd
+
+##every rational number can be written uniquely as the
+ product of primes, if negative exponents are allowed==1/2 or -1/5--
+* 2 ta number ar modde koyta komon divisor?= Gcd ar divisor
+
+* (a+b)%__gcd(a,b)==0 karon g a - ar divisor and b ar o.
+
+//### Euclids Algorithm :
+  akhane amra pai gcd(a,b)==gcd(a+b,b)==gcd(a-b,b)==gcd(a-2b,b)-- if a>b then
+  tar mane a theke b - korle same thkatece but ata amra just mood dia lakhte pari
+  gcd(a%b,b) if one is 0 then other is our gcd
+        int gcd(int a,int b){
+            if(a==0)return 0;
+            if(b==0)return 0;
+            if(b>a) swap(a,b);
+            return (a%b,b);
+        }
+   **** amra c++ a gcd use kori otay binary gcd use kore, CP_algorithm a ache
+   **Geometric proof ta easy minimum j box dia akta n*m box cover kora jay mod kore kore
+   jabo
+
+
+   **GCD(a,b) == 1 then co-prime
+   common divisors of a and b are exactly the ---divisors of gcd(a,b);-->
 
 int Rehan(){
 

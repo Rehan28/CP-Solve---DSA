@@ -28,17 +28,8 @@ int Rehan()
     cin(a,n);
     sort(a, a + n);
     ll cost = 0;
-    ll y;
-    if(n%2==0 or n==1)
-    {
-        y = a[n / 2];
-    }
-    else
-    {
-        y = (a[n / 2] + a[(n / 2) + 1]) / 2;
-    }
-    for (int i = 0; i < n;i++)
-    {
+    ll y = a[n/2]; // 0 indedx ar jonno n/2 e sob somoy median
+    for (int i = 0; i < n;i++){
         cost += abs(a[i] - y);
     }
     cout << cost << "\n";
@@ -50,8 +41,7 @@ int main()
     Muku28();
     int t = 1;
     //cin>>t;
-    while(t--)
-    {
+    while(t--){
         Rehan();
     }
 	return 0;

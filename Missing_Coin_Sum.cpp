@@ -27,11 +27,16 @@ int Rehan()
     vector<ll> v;
     cinv(v, n);
     sort(v.begin(), v.end());
-    for (int i = 1; i < 1e5;i++)
-    {
-        
+    ll target = 1;
+    for (int i = 0; i < n;i++){
+        if(v[i]<=target){
+            target += v[i];
+        }
+        else{
+            break;
+        }
     }
-
+    cout << target << "\n";
     return 0;
 }
 //--------------28--------------//
@@ -39,7 +44,7 @@ int main()
 {
     Muku28();
     int t = 1;
-    cin>>t;
+    //cin>>t;
     while(t--)
     {
         Rehan();
