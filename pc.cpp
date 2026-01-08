@@ -46,10 +46,13 @@ gcd(a,b)==gcd(a,(a-b))
 gcd(a,b,c)==gcd(a,(a-b),c)==gcd((a-b),a,c)==gcd(a,(a-b),(a-c))
 nothig but gcd(a[0],all(a[0]-a[i]));
 */
-#Codeforces Round 928(Div.4)(D)
+#Codeforces Round 928(Div .4)(D)
     /*
     bit ar problem.
     kono akta valure tar cyay boro 2 ar power - 1 dia xor korle ulta bit paoa jay
     int x = (1<<3)-1 = 7;
     jodi (4 xor x) kori = 100 ^ 111 then pabo = 011 ja ulta ai concept ta use korece.
     */
+https: // codeforces.com/problemset/problem/1614/C
+    // sum of all sub sequence is = total sum * 2^n-1(per elemenent 2^n-1 time asbe)
+    // sum of all sub_sequence xor = (bitwise or of array ) * 2^n-1;

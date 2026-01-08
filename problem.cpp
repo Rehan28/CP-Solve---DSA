@@ -229,7 +229,7 @@ void Best_sieve() {
 
 //### X - Divisor Summation
 /* divisor sum n bade formula dia korchi*/
-					int p = spf[n];
+			int p = spf[n];
             int prime_power = 1;
             while (n%p==0){
                 prime_power *= p;
@@ -410,6 +410,22 @@ jay
 just check then pair -- O(log(n))
 L - simple cinta kora uchid 
 */
+
+
+# Digital root
+The digital root or digital sum of a non-negative integer is the 
+single-digit value obtained by an iterative process of summing digits,
+on each iteration using the result from the previous iteration to compute 
+the digit sum. 
+The process continues until a single-digit number is reached.
+The digital root of a number is equal to the remainder when that number is 
+divided by 9. If the remainder is 0 and the number is greater than 0, then the 
+digital root is 9. If the number is 0, then the digital root of the number is 0.
+
+For example, the digital root of the number 12,345 is 6 
+because 1 + 2 + 3 + 4 + 5 equals 15 and then 1 + 5 equals 6.
+
+formula = (k-1)*9 + x;
 //--------------28--------------//
 int main(){
     Muku28();

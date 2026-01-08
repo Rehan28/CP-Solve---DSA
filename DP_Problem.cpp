@@ -153,3 +153,14 @@ itrative o korchi
     *******ex = int second_fun(int,int);
 
 */
+
+#Candies
+/*optimization kora lagbe
+    prefixsum and mod aktu valo kore kora lagbe
+    ans += mod;
+    ans %= mod;
+    kora valo noile -1 aste pare
+*/
+
+#Slimes 
+/*  ulta vabe cinta kore try korte paro */

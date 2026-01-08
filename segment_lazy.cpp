@@ -20,7 +20,7 @@ struct ST {
     lazy[n] = 0;
   }
   inline long long combine(long long a,long long b) { // change this
-    return a + b;
+    return max(a,b);
   }
   inline void pull(int n) { // change this
     t[n] = t[lc] + t[rc];
@@ -58,12 +58,24 @@ struct ST {
   }
 }t;
 int32_t main() {
-  int n = 5;
+  int n,q;
+  cin >> n>>q;
   for (int i = 1; i <= n; i++) {
-    a[i] = i;
+    int x;
+    cin >> x;
+    a[x] = x;
   }
-  t.build(1, 1, n); // building the segment tree
-  t.upd(1, 1, n, 2, 3, 10); // adding 10 to the segment [2, 3]
-  cout << t.query(1, 1, n, 1, 5) << '\n'; // range sum query on the segment [1, 5]
+  t.build(1, 1, n); 
+  while (q--){
+    char c;
+    cin >> c;
+    if(c=='+'){
+      int x, y;
+      cin >> x>> y;
+      upd()
+    }
+  }
+  
+  
   return 0;
 }

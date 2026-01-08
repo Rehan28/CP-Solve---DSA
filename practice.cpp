@@ -56,10 +56,9 @@ void NofOddDevisorUnderN(){
 void EuclidLemma(){
     // formula 
     // if(a*b/p) then a/p or b/p must if p is prim
-    //14*2/7 then 14/7 is true
+    // 14*2/7 then 14/7 is true
 }
 void FandamentalTheoremOfArithmatic(){//unique factorization
-
     /*integer greater than 1 can be represented uniquely as a 
      product of prime numbers*/
 }
@@ -105,11 +104,9 @@ void PrimeFactor(){
 }
 #n^2+n+41 ai equation dia 0 to 39 n bosale sob prime paoa jay --
 
-#NOD With Prime Facror
-void NodWithPrimeFact()
-{
-    //ata tamon dorkar nai, But NT ty sob Prime factor Dia cinta kora uchid
-    //
+#NOD With Prime FacTor
+void NodWithPrimeFact(){
+    //Ata tamon dorkar nai, But NT ty sob Prime factor Dia cinta kora uchid.
     int n;
     cin >> n;
     map<int, int> mp;
@@ -123,7 +120,7 @@ void NodWithPrimeFact()
     }
     int ans = 1;
     if(n>1){
-         v.push_back(n);
+        v.push_back(n);
         mp[n]++;
     }
     sort(v.begin(), v.end());
@@ -358,3 +355,8 @@ int main(){
     }
 	return 0;
  }
+ //ratio int a ber korar jonno ata use kora jay
+ d and k ar ratio
+        int x = __gcd(d, k);
+        int dx = d / x;
+        int kx = k / x;

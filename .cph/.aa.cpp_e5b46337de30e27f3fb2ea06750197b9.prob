@@ -1,0 +1,1 @@
+{"name":"Local: aa","url":"d:\\C++ code\\aa.cpp","tests":[{"id":1731144013031,"input":"3\n3\n2\n6","output":"Case 1: 4\n"},{"id":1731146358858,"input":"1\n2 2 3","output":""},{"id":1731157122390,"input":"1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++ code\\aa.cpp","group":"local","local":true}

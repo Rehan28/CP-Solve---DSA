@@ -9,40 +9,40 @@ void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
 #define yes cout << "YES"<<nl;
 #define mod 1000000007
 
-const int N = 105;
-const int S = 1e5 + 4;
+const int N = 102;
+const int S = 1e5 + 2;
 int a[N];
 int n, x;
 int dp[N][S];
 
-int way(int i,int val){
-    if(i==n){
-        if(val==x){
-            return 1;
-        }
-        return 0;
-    }
-    int &ans = dp[i][val];
-    if(ans!=-1){
-        return ans;
-    }
-    ans = 0;
-    for (int j = 0; j <= a[i];j++){
-        if(val+j<=x){
-            ans += (way(i + 1, val + j));
-            if(ans>=mod){
-                ans -= mod;
-            }
-        }
-    }
-    return ans;
-}
-
 void solve(int test) {
     cin>>n>>x;
     cin(a,n);
-    memset(dp, -1, sizeof dp);
-    cout << way(0, 0) << "\n";
+    int pfx[n+1][x+1];
+    pfx[0][0] = 1;
+    for (int val = 1; val <= x;val++){
+        pfx[0][val] = pfx[0][val - 1] + dp[0][val];
+    }
+    for (int i = 1; i <= n;i++){
+        for (int val = 0; val <= x;val++){
+            int &ans = dp[i][val];
+            int x = val - a[i - 1];//0 indexing array
+            x = max(0, x);
+            if(x==0){
+                ans = pfx[i - 1][val];
+            }
+            else{
+                ans = (pfx[i - 1][val] - pfx[i - 1][x-1])%mod;
+            }
+            ans += mod;//negative hoite pare tai add kore then mod korchi
+            ans %= mod;
+        }
+        pfx[i][0] = dp[i][0];
+        for (int val = 1; val <= x;val++){
+            pfx[i][val] = (pfx[i][val - 1] + dp[i][val]) % mod;
+        }
+    }
+    cout << dp[n][x] << "\n";
 }
 int main() {
     Muku28();

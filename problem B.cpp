@@ -28,3 +28,5 @@ int main(){
 
 
 }
+//good problem
+// 1+2+3+4+... amon kore sum 1e14+ a o problem hoy na O(n) a colbe

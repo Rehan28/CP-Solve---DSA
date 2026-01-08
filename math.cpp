@@ -235,3 +235,16 @@ int main() {
     }
 	return 0;
  }
+
+ int binPow(int a, int n) {
+    if (n == 0) return 1;
+    if (n == 1) return a % MOD;
+    int ret = binPow(a, n / 2);
+    ret = (ret * ret) % MOD;
+    if (n & 1)
+        ret = (ret * a) % MOD;
+    return ret;
+}
+
+inver hobe binpow(n, MOD - 2);
+

@@ -1,94 +1,46 @@
-#include<bits/stdc++.h>
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define nl cout<<"\n";
-ll mod = 1e9 + 7;
-bool comp(string a, string b) {
-if (a.size() != b.size()) return a.size() < b.size();
-return a < b;
-}
-//Muku28
-void Rehan()
-{
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1000000007
+
+void solve(int test) {
     int n;
     cin>>n;
-    int mn = INT_MAX;
-    int mx = INT_MIN;
-    int mnv = INT_MAX;
-    int mxv = INT_MAX;
-    int Totalres = INT_MAX;
-    int have = 0;
-    int mnt = INT_MAX;
-    int mxt = INT_MIN;
-    for (int i = 0; i < n;i++)
-    {
-        int a, b, c;
-        cin >> a >> b >> c;
-        int res = 0;
-        int x = 0;
-        if(a<mn)
-        {
-            mn = a;
-            mnv = c;
-            x++;
+    int a[n];
+    int b[n];
+    int c[n];
+    for (int i = 0; i < n;i++){
+        cin >> a[i] >> b[i] >> c[i];
+    }
+
+    int mx = b[0];
+    int mn = a[0];
+    int ans = c[0];
+    int last_mn = c[0];
+    int last_mx = c[0];
+    for (int i = 0; i < n;i++){
+        if(a[i]<=mn and b[i]>=mx){
+            ans = min(ans, c[i]);
+            if(a[i]<mn or b[i]>mx){
+                last_mn = ans;
+                last_mx = ans;
+            }
         }
-        else if(a==mn)
-        {
-            mnv = min(mnv,c);
-             x++;
-        }
-        if(b>mx)
-        {
-            mx = b;
-            mxv = c;
-            x++;
-        }
-        else if(b==mx)
-        {
-            mxv = min(mxv,c);
-            x++;
-        }
-        res = mnv + mxv;
-        if(x==2)
-        {
-            res = res / 2;
-        }
-        if(mnt>mn and mxt<mx)
-        {
-            mnt = mn;
-            mxt = mx;
-            Totalres = c;
-            res = Totalres;
-        }
-        else if(mnt==mn and mxt==mx)
-        {
-            Totalres = min(Totalres, c);
-            res = min(Totalres,res);
-        }
-        cout << res << "\n";
+        else if()
     }
 }
-//--------------28--------------//
-int main()
-{
+int main() {
     Muku28();
-    int t = 1;
-    cin>>t;
-    while(t--)
-    {
-        Rehan();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
     }
-		return 0;
- }
+    return 0;
+}

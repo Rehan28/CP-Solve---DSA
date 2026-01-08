@@ -12,15 +12,15 @@ void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
 void solve(int test) {
     ll n;
     cin>>n;
-    ll lcm = 1;
-    ll ans = 2;
+    ll lc = 1;
+    ll ans = 0;
     for (ll i = 2; ;i++){
-        //ll befor = n / lcm;
-        lcm = (i * lcm) / __gcd(lcm, i);
-        ll after = n / lcm;
-        ans += after;
+        ll b = (n/lc);
+        lc = (lc * i) / __gcd(lc, i);
+        ll a = n/lc;
+        ans += (b - a)*i;
         ans %= mod;
-        if(lcm>n){
+        if(lc>n){
             break;
         }
     }

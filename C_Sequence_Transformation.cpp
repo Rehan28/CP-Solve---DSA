@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1000000007
+
+void solve(int test) {
+    int n;
+    cin>>n;
+    int a[n];
+    cin(a,n);
+    bool f = true;
+    for (int i = 0; i < n;i++){
+        if(a[0]!=a[i]){
+            f = false;
+            break;
+        }
+    }
+    if(f){
+        cout << 0 << "\n";
+    }
+    else{
+        map<int, int> mp;
+        int x = 0;
+        for (int i = n-1; i>00;i--){
+            if(a[i]!=a[i-1]){
+                x = i;
+                break;
+            }
+        }
+        for (int i = 1; i <x;i++){
+            if(a[i]!=a[i-1]){
+                mp[a[i]]++;
+            }
+        }
+        int ans = INT_MAX;
+        for (int i = 0; i < n;i++){
+            ans = min(ans, mp[a[i]] + 1);
+        }
+        cout << ans << '\n';
+    }
+}
+int main() {
+    Muku28();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
+    }
+    return 0;
+}

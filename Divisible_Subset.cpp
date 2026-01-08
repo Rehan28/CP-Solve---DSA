@@ -1,0 +1,64 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1000000007
+#define int long long
+
+void solve(int test) {
+    int n;
+    cin>>n;
+    int a[n];
+    cin(a,n);
+
+    int pfx[n+1] = {0};
+
+    for (int i = 1;i<=n;i++){
+        pfx[i] = pfx[i - 1] + a[i - 1];
+    }
+
+    int m[n + 1] = {0};
+    for (int i = 1; i <= n;i++){
+        m[i] = pfx[i] % n;
+    }
+
+   map<int, pair<int,int>> mp;
+
+   for (int i = 1; i <= n;i++){
+        if(m[i]==0){
+            cout << i << nl;
+            for (int j = 1; j <= i;j++){
+                cout << j << " ";
+            }
+            cout << nl;
+            return;
+        }
+        mp[m[i]].first++;
+        if(mp[m[i]].first==1){
+            mp[m[i]].second = i;
+        }
+        if(mp[m[i]].first>1){
+            cout << i - mp[m[i]].second << nl;
+            for (int j = mp[m[i]].second + 1; j <= i;j++){
+                cout << j << " ";
+            }
+            cout << nl;
+            return;
+        }
+   }
+}
+int32_t main() {
+    //Muku28();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
+    }
+    return 0;
+}

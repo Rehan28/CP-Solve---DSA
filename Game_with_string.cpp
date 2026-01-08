@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "No"<<nl;
+#define yes cout << "Yes"<<nl;
+#define mod 1000000007
+
+void solve(int test) {
+    int n;
+    string s;
+    cin >> s;
+    n = s.size();
+    int couple = 0;
+    stack<char> st;
+    for (int i = 0; i < n;i++){
+        if(st.size()>0 and st.top()==s[i]){
+            couple++;
+            st.pop();
+        }
+        else{
+            st.push(s[i]);
+        }
+    }
+    if(couple%2){
+        yes;
+    }
+    else{
+        no;
+    }
+}
+int main() {
+    Muku28();
+    int test=1;
+    //cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
+    }
+    return 0;
+}

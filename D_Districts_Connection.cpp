@@ -16,8 +16,8 @@ typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
 #define nl cout<<"\n";
 ll mod = 1e9 + 7;
 bool comp(string a, string b) {
-if (a.size() != b.size()) return a.size() < b.size();
-return a < b;
+    if (a.size() != b.size()) return a.size() < b.size();
+    return a < b;
 }
 
 //Muku28
@@ -78,3 +78,4 @@ int main()
     }
 		return 0;
  }
+ 

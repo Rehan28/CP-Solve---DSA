@@ -387,6 +387,9 @@ void solve(int test) {
 */
 //time optimization
 /*LIS dia optimization ta bujano hoiche*/
+// Code Increasing Subsequence  atay solbe ache
+
+
 void solve(int test) {
     //int n;
     cin>>n;

@@ -1,79 +1,65 @@
-#include<bits/stdc++.h>
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define nl cout<<"\n";
-ll mod = 1e9 + 7;
-bool comp(string a, string b) {
-if (a.size() != b.size()) return a.size() < b.size();
-return a < b;
-}
-//Muku28
-int Rehan()
-{
-    
-}
-//--------------28--------------//
-int main()
-{
-    Muku28();
-    int t = 1;
-    cin>>t;
-    for (int i = 0;i<t;i++)
-    {
-        ll k, n;
-        cin >> k >> n;
-        ll val = k * (k - 1);
-        ll sum = 0;
-        ll jump = (k % 3) + ((k / 3) - 1) * 3;
-        ll point = k + jump;
-       
-        ll j = 1;
-        while(point>0)
-        {
-            sum += j * point;
-            j++;
-            point = point - 2;
-        }
-       
-        ll ans = 0;
-        if(k-1<=n)
-        {
-            if(val>=n)
-            {
-                ll mul = val / n;
-                ans += (mul * sum);
-                if(val%n!=0)
-                {
-                    ll gap = val % n;
-                    for (ll i = k - 1; i <= gap;i++)
-                    {
-                        sum += abs((i % k) - (i % (k - 1)));
-                    }
-                }
-            }
-            else
-            {
-                for (ll i = k - 1; i <= n;i++)
-                {
-                    ans += abs((i % k) - (i % (k - 1)));
-                }
-            }
-        }
-        cout << "Case " << i + 1 << ": ";
-        cout << ans << "\n";
-    }
+#define cin_arr(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define int long long
 
-	return 0;
- }
+const int MOD = 998244353;
+const int N = 200000 + 5;
+int fact[N], ifact[N];
+
+int modpow(int a, int b){
+    int ans = 1;
+    while(b){
+        if(b&1){
+            ans = (ans*a)%MOD;
+        } 
+        a = (a*a)%MOD;
+        b >>= 1;
+    }
+    return ans;
+}
+
+void f(){
+    fact[0] = 1;
+    for(int i=1;i<N;i++){
+       fact[i] = fact[i-1]*i % MOD; 
+    } 
+    ifact[N-1] = modpow(fact[N-1], MOD-2);
+    for(int i=N-2;i>=0;i--){
+        ifact[i] = ifact[i+1]*(i+1)%MOD;
+    }
+}
+
+int nCr(int n, int r){
+    if(r<0 || r>n) return 0;
+    return fact[n] * ifact[r] % MOD * ifact[n-r] % MOD;
+}
+
+void solve(int test){
+    int n; 
+    cin >> n;
+    string s;
+    cin >> s;
+    int one = 0;
+    for (int i = 0; i < n;i++){
+        if(s[i]=='1'){
+            one++;
+        } 
+    } 
+    int temp1 = nCr(n,2) * nCr(n-2, one-1) % MOD;
+    int temp2 = one * nCr(n, one+1) % MOD;
+    int ans = (temp1 - temp2) % MOD;
+    if(ans < 0) ans += MOD;
+    cout << ans << nl;
+}
+
+int32_t main(){
+    Muku28();
+    f();
+    int test=1;
+    cin>>test;
+    while(test--) solve(test);
+    return 0;
+}

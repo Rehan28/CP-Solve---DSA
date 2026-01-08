@@ -1,81 +1,59 @@
-#include<bits/stdc++.h>
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void printi(int x){cout<<x<<"\n";}void printl(ll x){cout<<x<<"\n";}
-void prints(string x){cout<<x<<"\n";}
-void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define nl cout<<"\n";
-ll mod = 1e9 + 7;
-bool comp(string a, string b) {
-if (a.size() != b.size()) return a.size() < b.size();
-return a < b;
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define int long long
+
+bool comp(pair<int,int> a, pair<int,int> b) {
+   if(a.first==b.first)
+   {
+       return a.second > b.second;
+   }
+   return a.first < b.first;
 }
-//Muku28
-int Rehan()
-{
-    int n,k;
-    cin>>n>>k;
+
+void solve(int test) {
+    int n, p;
+    cin>>n>>p;
     int a[n];
     cin(a,n);
     int b[n];
-    cin(b, n);
+    cin(b,n);
+
     vector<pair<int, int>> vp;
-    for (int i = 0; i < n;i++)
-    {
-        vp.push_back(make_pair(b[i], a[i]));
+
+    for(int i=0;i<n;i++){
+        vp.push_back(make_pair(b[i],a[i]));
     }
-    sort(vp.begin(), vp.end());
-    int ans = k;
-    int x = k;
-    for (int i = 0; i < n;i++)
-    {
-        x = vp[i].first;
-        if(vp[i].first<=k)
-        {
-            int y = (n - vp[i].second);
-            int xx = n-1;
-            n -= vp[i].second;
-            if(y-i>2)
-            {
-                n++;
-                ans += (x * vp[i].second);
-            }
-            else if(y-i==2)
-            {
-                ans += (x * vp[i].second);
-            }
-            else
-            {
-                ans += (x * (xx-i));
-            }
+
+    sort(vp.begin(), vp.end() ,comp);
+
+    int x = n-1;
+    int ans = 0;
+    for(int i=0;i<n;i++){
+        //cout<<vp[i].first<<" "<<vp[i].second<<nl;
+        if(x<=0){
+            break;
         }
-        else
-        {
-            ans += k;
+        if(p<vp[i].first){
+            ans += (p);
+            x--;
+            continue;
         }
-        
+        ans += (vp[i].first*min(x,vp[i].second));
+        x -= vp[i].second;
     }
-    cout << ans << "\n";
+
+    cout << ans+p << "\n";
+}
+int32_t main() {
+    Muku28();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
+    }
     return 0;
 }
-//--------------28--------------//
-int main()
-{
-    Muku28();
-    int t = 1;
-    cin>>t;
-    while(t--)
-    {
-        Rehan();
-    }
-		return 0;
- }

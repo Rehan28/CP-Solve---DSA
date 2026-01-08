@@ -1,78 +1,43 @@
-#include<bits/stdc++.h>
-using namespace std;typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
 void Muku28(){ios_base::sync_with_stdio(false);cin.tie(NULL);}
-void dbg(int x) {cout << "x is " << x << endl; }
-typedef vector<ll> vi;typedef vector<string> vs;typedef pair<ll, ll> pii;
-#define cinv(v,n) for(int i=0;i<n;i++){int a;cin>>a;v.push_back(a);}
-#define cin(a,n) for(int i=0;i<n;i++){cin>>a[i];}
-#define all(x) x.begin(), x.end()
-#define no cout << "NO\n"
-#define yes cout << "YES\n"
-#define nl cout<<"\n";
-ll mod = 1e9 + 7;
+#define cin(a,n) for(int i=0;i<n;i++){ cin>>a[i];}
+#define nl "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<nl;
+#define no cout << "NO"<<nl;
+#define yes cout << "YES"<<nl;
+#define mod 1000000007
+#define int long long
 
-//Muku28
-int Rehan(){
-    int n,k;
-    cin>>n>>k;
-    ll a[n];
-    cin(a,n);
-    ll b[n];
+void solve(int test) {
+    int n, k;
+    cin >> n >> k;
+    int a[n];
+    cin(a, n);
+    int b[n];
     cin(b, n);
-    vector<pair<int, int>> vp;
+    int comp[n + 1] = {0};
     for (int i = 0; i < n;i++){
-        b[i] = abs(b[i]);
-        vp.push_back(make_pair(b[i], a[i]));
+        comp[abs(b[i])] += a[i];
     }
-    sort(vp.begin(), vp.end());
-    int j = 0;
-    int time = 0;
-    int t[n]={0};
-    bool f = true;
-    while (j<n){
-        ll x = k;
-        for (int i = j; i < n;i++){
-            int xx = vp[i].second;
-            int yy = vp[i].first;
-            yy -= time;
-            if(xx<=x){
-                x -= vp[i].second;
-                vp[i].second = 0;
-                t[j] = time;
-                if(yy<1){
-                    f = false;
-                    break;
-                }
-                j++;
-            }
-            else{
-                vp[i].second -= x;
-                x = 0;
-            }
-            if(x==0){
-                break;
-            }
+    int avail = 0;
+    for (int i = 1; i <=n;i++){
+        avail += k;
+        avail -= comp[i];
+        if(avail<0){
+            no;
+            return;
         }
-        if(f==false){
-            break;
-        }
-        time++;
     }
-    if(f){
-        yes;
-    }
-    else{
-        no;
+    yes;
+}
+int32_t main() {
+    Muku28();
+    int test=1;
+    cin>>test;
+    for(int i=1;i<=test;i++) {
+        solve(i);
     }
     return 0;
 }
-//--------------28--------------//
-int main(){
-    Muku28();
-    int t = 1;
-    cin>>t;
-    while(t--){
-        Rehan();
-    }
-		return 0;
- }

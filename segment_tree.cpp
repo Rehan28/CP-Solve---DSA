@@ -395,7 +395,7 @@ int32_t main() {
 }
 
 
-void Coordinate_Compression(){\
+void Coordinate_Compression(){
     // Called Coordinate Compression
     // atar kaj holo boro akta range a number ar modde kichu jayga faka thakle 
     // ota compres kore jay (1,5,10) rea = 1,2,3 banano jay
@@ -415,3 +415,23 @@ void Coordinate_Compression(){\
         //id++;
     }
 }
+
+//Sparse Table 
+
+const int N = 1e5 + 9;
+
+int t[N][18], a[N];
+void build(int n) {
+  
+  for(int k = 1; k < 18; ++k) {
+    for(int i = 1; i + (1 << k) - 1 <= n; ++i) {
+      t[i][k] = min(t[i][k - 1], t[i + (1 << (k - 1))][k - 1]);
+    }
+  }
+}
+
+int query(int l, int r) {
+  int k = 31 - __builtin_clz(r - l + 1);
+  return min(t[l][k], t[r - (1 << k) + 1][k]);
+}
+//https://vjudge.net/contest/664316#problem/K
