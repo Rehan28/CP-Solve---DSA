@@ -22,6 +22,7 @@ patha : simple ar complex hoite pare.
  */
 //#Handshaking Lemma
 /*
+In graph theory, a vertex (or node) has an odd degree if it's connected to an odd number of edges 
 sob somoy even songkhok odd degree node thakbe.
 kano?
 j kono 2 ta node a :
@@ -91,6 +92,7 @@ void dfs(int u) // O(E+V);
     }
 }
 
+
 //#connected or disconnected 
 void connected_or(){
     dfs(1);
@@ -156,7 +158,7 @@ void bfs(int x){
     
 }
 
-//# Shortest Path using BFS(jokhon sob gular weight same)
+// Shortest Path using BFS(jokhon sob gular weight same)
 int dis[N];
 int path[N];
 int num_path[N];
@@ -174,6 +176,8 @@ void shortest_path(int x){//and printing path
                 path[v] = u;
                 num_path[v] = num_path[u] + 1;//Number of shortest path
                 //modulo lagte pare
+
+                // mone porche na maybe number of path
                 dis[v] = dis[u] + 1;//parent ar 1 basi
                 vis[v] = true;
                 q.push(v);
@@ -197,13 +201,14 @@ void shortest_path(int x){//and printing path
 
 //#multi source bfs 
 /*
-barer kono akta point dia sobulay jabo then bfs colbe
+barer kono akta point dia sobulay connect jabo then bfs colbe
 bairer kono point lagena just start a queue te nilye hoy
 
 */
 
 //##Bicoloring and Bipartite Graphs
 /*sob edge jodi 2 ta alada set ba color a connected hoy then bipartite*/
+//This is the same as coloring the graph in two colors such that every adjacent node has different colors.
 int color[N];
 bool ok;
 void bicolor(int u){//Multiple loop dorkar nai
